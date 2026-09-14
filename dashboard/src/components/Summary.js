@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const Summary = () => {
+  const [explanation, setExplanation] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleExplainClick = () => {
+    setLoading(true);
+    setError("");
+    setExplanation("");
+
+    axios
+      .get("http://localhost:3002/explainPortfolio", { withCredentials: true })
+      .then((res) => {
+        if (res.data.success) {
+          setExplanation(res.data.explanation);
+        } else {
+          setError(res.data.message || "Could not generate insights.");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Something went wrong while generating insights.");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   return (
     <>
       <div className="username">
@@ -56,6 +84,49 @@ const Summary = () => {
           </div>
         </div>
         <hr className="divider" />
+      </div>
+
+      <div className="section" style={{ padding: "16px" }}>
+        <span>
+          <p>AI Portfolio Insights</p>
+        </span>
+
+        <button
+          onClick={handleExplainClick}
+          disabled={loading}
+          style={{
+            marginTop: "10px",
+            padding: "10px 18px",
+            backgroundColor: "#387ed1",
+            color: "#fff",
+            border: "none",
+            borderRadius: "4px",
+            cursor: loading ? "not-allowed" : "pointer",
+            fontSize: "14px",
+          }}
+        >
+          {loading ? "Analyzing your portfolio..." : "Explain my portfolio"}
+        </button>
+
+        {error && (
+          <p style={{ color: "#e63946", marginTop: "12px" }}>{error}</p>
+        )}
+
+        {explanation && (
+          <div
+            style={{
+              marginTop: "16px",
+              padding: "16px",
+              backgroundColor: "#f5f8fb",
+              borderRadius: "6px",
+              lineHeight: "1.6",
+              fontSize: "14px",
+              color: "#333",
+            }}
+          >
+            {explanation}
+          </div>
+        )}
       </div>
     </>
   );

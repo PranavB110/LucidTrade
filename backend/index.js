@@ -7,6 +7,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
 const authRoute = require("./Routes/AuthRoute");
+const insightsRoute = require("./Routes/InsightsRoute");
 const { userVerification } = require("./Middlewears/AuthMiddleware");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
@@ -32,6 +33,7 @@ app.use(cookieParser());
 
 // Auth routes
 app.use("/", authRoute);
+app.use("/", insightsRoute);
 
 // Holdings routes
 app.get("/allHoldings", userVerification, async (req, res) => {
