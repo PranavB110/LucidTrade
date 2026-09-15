@@ -70,3 +70,11 @@ module.exports.CheckAuth = async (req, res) => {
     },
   });
 };
+
+module.exports.Logout =  async (req, res) => {
+  res.cookie("token", "", {
+    maxAge: 1,
+    httpOnly: false,
+  });
+  res.status(200).json({ success: true, message: "Logged out successfully." });
+};

@@ -1,10 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/checkAuth", { withCredentials: true })
+      .then((res) => {
+        if (res.data.status) {
+          setUsername(res.data.user.username || res.data.user.email);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to fetch user info:", err);
+      });
+  }, []);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -14,12 +30,28 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
+  const handleLogoutClick = () => {
+    axios
+      .post("http://localhost:3002/logout", {}, { withCredentials: true })
+      .then(() => {
+        window.location.href = "http://localhost:3001/login";
+      })
+      .catch((err) => {
+        console.error("Logout failed:", err);
+      });
+  };
+
+  const getInitials = (name) => {
+    if (!name) return "U";
+    return name.slice(0, 2).toUpperCase();
+  };
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} />
+      <img src="logo.png" style={{ width: "50px" }} alt="LucidTrade logo" />
       <div className="menus">
         <ul>
           <li>
@@ -90,9 +122,43 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+        <div style={{ position: "relative" }}>
+          <div className="profile" onClick={handleProfileClick}>
+            <div className="avatar">{getInitials(username)}</div>
+            <p className="username">{username || "..."}</p>
+          </div>
+
+          {isProfileDropdownOpen && (
+            <div
+              style={{
+                position: "absolute",
+                top: "100%",
+                right: 0,
+                backgroundColor: "#fff",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                borderRadius: "4px",
+                padding: "8px 0",
+                minWidth: "140px",
+                zIndex: 10,
+              }}
+            >
+              <button
+                onClick={handleLogoutClick}
+                style={{
+                  width: "100%",
+                  padding: "10px 16px",
+                  border: "none",
+                  background: "none",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  fontSize: "14px",
+                  color: "#e63946",
+                }}
+              >
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
