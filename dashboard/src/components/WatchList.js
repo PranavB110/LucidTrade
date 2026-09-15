@@ -11,6 +11,7 @@ import {
   KeyboardArrowDown,
   KeyboardArrowUp,
   MoreHoriz,
+  InfoOutlined,
 } from "@mui/icons-material";
 
 import { watchlist } from "../data/data";
@@ -46,33 +47,6 @@ const WatchList = () => {
     ],
   };
 
-  // export const data = {
-  //   labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-  // datasets: [
-  //   {
-  //     label: "# of Votes",
-  //     data: [12, 19, 3, 5, 2, 3],
-  //     backgroundColor: [
-  //       "rgba(255, 99, 132, 0.2)",
-  //       "rgba(54, 162, 235, 0.2)",
-  //       "rgba(255, 206, 86, 0.2)",
-  //       "rgba(75, 192, 192, 0.2)",
-  //       "rgba(153, 102, 255, 0.2)",
-  //       "rgba(255, 159, 64, 0.2)",
-  //     ],
-  //     borderColor: [
-  //       "rgba(255, 99, 132, 1)",
-  //       "rgba(54, 162, 235, 1)",
-  //       "rgba(255, 206, 86, 1)",
-  //       "rgba(75, 192, 192, 1)",
-  //       "rgba(153, 102, 255, 1)",
-  //       "rgba(255, 159, 64, 1)",
-  //     ],
-  //     borderWidth: 1,
-  //   },
-  // ],
-  // };
-
   return (
     <div className="watchlist-container">
       <div className="search-container">
@@ -101,6 +75,10 @@ export default WatchList;
 
 const WatchListItem = ({ stock }) => {
   const [showWatchlistActions, setShowWatchlistActions] = useState(false);
+  const [explainOpen, setExplainOpen] = useState(false);
+  const [explainLoading, setExplainLoading] = useState(false);
+  const [explainText, setExplainText] = useState("");
+  const [explainError, setExplainError] = useState("");
 
   const handleMouseEnter = (e) => {
     setShowWatchlistActions(true);
@@ -108,6 +86,32 @@ const WatchListItem = ({ stock }) => {
 
   const handleMouseLeave = (e) => {
     setShowWatchlistActions(false);
+  };
+
+  const handleExplainClick = () => {
+    setExplainOpen(true);
+    setExplainLoading(true);
+    setExplainError("");
+    setExplainText("");
+
+    axios
+      .get(`http://localhost:3002/explainStock/${stock.name}`, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data.success) {
+          setExplainText(res.data.explanation);
+        } else {
+          setExplainError(res.data.message || "Could not fetch insights.");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        setExplainError("Something went wrong while fetching insights.");
+      })
+      .finally(() => {
+        setExplainLoading(false);
+      });
   };
 
   return (
@@ -124,12 +128,48 @@ const WatchListItem = ({ stock }) => {
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchlistActions && <WatchListActions uid={stock.name} />}
+      {showWatchlistActions && (
+        <WatchListActions uid={stock.name} onExplainClick={handleExplainClick} />
+      )}
+
+      {explainOpen && (
+        <div
+          style={{
+            margin: "8px 0",
+            padding: "12px",
+            backgroundColor: "#f5f8fb",
+            borderRadius: "6px",
+            fontSize: "13px",
+            lineHeight: "1.5",
+            color: "#333",
+            position: "relative",
+          }}
+        >
+          <button
+            onClick={() => setExplainOpen(false)}
+            style={{
+              position: "absolute",
+              top: "6px",
+              right: "8px",
+              border: "none",
+              background: "none",
+              cursor: "pointer",
+              fontSize: "14px",
+              color: "#888",
+            }}
+          >
+            ✕
+          </button>
+          {explainLoading && <p>Analyzing recent news for {stock.name}...</p>}
+          {explainError && <p style={{ color: "#e63946" }}>{explainError}</p>}
+          {explainText && <p>{explainText}</p>}
+        </div>
+      )}
     </li>
   );
 };
 
-const WatchListActions = ({ uid }) => {
+const WatchListActions = ({ uid, onExplainClick }) => {
   const generalContext = useContext(GeneralContext);
 
   const handleBuyClick = () => {
@@ -155,6 +195,17 @@ const WatchListActions = ({ uid }) => {
           TransitionComponent={Grow}
         >
           <button className="sell">Sell</button>
+        </Tooltip>
+        <Tooltip
+          title="Why is this moving?"
+          placement="top"
+          arrow
+          TransitionComponent={Grow}
+          onClick={onExplainClick}
+        >
+          <button className="action">
+            <InfoOutlined className="icon" />
+          </button>
         </Tooltip>
         <Tooltip
           title="Analytics (A)"

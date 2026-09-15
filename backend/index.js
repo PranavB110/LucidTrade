@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const authRoute = require("./Routes/AuthRoute");
 const insightsRoute = require("./Routes/InsightsRoute");
+const stockNewsRoute = require("./Routes/StockNewsRoute");
 const { userVerification } = require("./Middlewears/AuthMiddleware");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
@@ -34,6 +35,7 @@ app.use(cookieParser());
 // Auth routes
 app.use("/", authRoute);
 app.use("/", insightsRoute);
+app.use("/", stockNewsRoute);
 
 // Holdings routes
 app.get("/allHoldings", userVerification, async (req, res) => {
