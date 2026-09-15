@@ -14,7 +14,7 @@ function CreateTicket() {
                     </div>
                 </div>
                 <div className="col-4">
-                    <h3 className="fs-5"><i class="fa-solid fa-circle-user"></i> Your Zerodha Account</h3>
+                    <h3 className="fs-5"><i class="fa-solid fa-circle-user"></i> Your LucidTrade Account</h3>
                     <div className="p-3">
                         <a href="" style={{textDecoration:"none"}}>Resident individual</a> <br/>
                         <a href="" style={{textDecoration:"none"}}>Minor</a> <br/>
@@ -23,7 +23,7 @@ function CreateTicket() {
                     </div>
                 </div>
                 <div className="col-4">
-                    <h3 className="fs-5"><i class="fa-solid fa-chart-column"></i> Your Zerodha Account</h3>
+                    <h3 className="fs-5"><i class="fa-solid fa-chart-column"></i> Your LucidTrade Account</h3>
                     <div className="p-3">
                         <a href="" style={{textDecoration:"none"}}>Resident individual</a> <br/>
                         <a href="" style={{textDecoration:"none"}}>Minor</a> <br/>
@@ -43,7 +43,7 @@ function CreateTicket() {
                     </div>
                 </div>
                 <div className="col-4">
-                    <h3 className="fs-5"><i class="fa-solid fa-circle-user"></i> Your Zerodha Account</h3>
+                    <h3 className="fs-5"><i class="fa-solid fa-circle-user"></i> Your LucidTrade Account</h3>
                     <div className="p-3">
                         <a href="" style={{textDecoration:"none"}}>Resident individual</a> <br/>
                         <a href="" style={{textDecoration:"none"}}>Minor</a> <br/>
@@ -52,7 +52,7 @@ function CreateTicket() {
                     </div>
                 </div>
                 <div className="col-4">
-                    <h3 className="fs-5"><i class="fa-solid fa-chart-column"></i> Your Zerodha Account</h3>
+                    <h3 className="fs-5"><i class="fa-solid fa-chart-column"></i> Your LucidTrade Account</h3>
                     <div className="p-3">
                         <a href="" style={{textDecoration:"none"}}>Resident individual</a> <br/>
                         <a href="" style={{textDecoration:"none"}}>Minor</a> <br/>

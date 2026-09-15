@@ -5,9 +5,9 @@ function Hero() {
     <div className="container">
       <div className="row p-5 mb-5">
         <h1 className="fs-2 text-center">
-          We pioneered the discount broking model in India.
+          We're building trading platforms that actually explain themselves.
           <br />
-          Now, we are breaking ground with our technology.
+          Now, we're doing it with AI.
         </h1>
       </div>
       <div
@@ -16,38 +16,41 @@ function Hero() {
       >
         <div className="col-6 p-5 fs-6">
           <p>
-            We kick-started operations on the 15th of August, 2010 with the goal
-            of breaking all barriers that traders and investors face in India in
-            terms of cost, support, and technology. We named the company
-            Zerodha, a combination of Zero and "Rodha", the Sanskrit word for
-            barrier.
+            We started building LucidTrade with a simple goal — traders don't
+            just need a place to execute orders, they need to actually
+            understand what's happening to their money. We named it LucidTrade
+            because "lucid" means clear, and that's exactly what most trading
+            platforms fail to give you: clarity.
           </p>
           <p>
-            Today, our disruptive pricing models and in-house technology have
-            made us the biggest stock broker in India.
+            Using AI, LucidTrade explains your portfolio performance and stock
+            price movements in plain English, backed by real market data — not
+            just raw numbers you're left to interpret alone.
           </p>
           <p>
-            Over 1.6+ crore clients place billions of orders every year through
-            our powerful ecosystem of investment platforms, contributing over
-            15% of all Indian retail trading volumes.
+            A personal project demonstrating full-stack development and AI
+            integration in fintech.
           </p>
         </div>
         <div className="col-6 p-5 fs-6">
           <p>
-            In addition, we run a number of popular open online educational and
-            community initiatives to empower retail traders and investors.
+            In addition to building the platform, this project explores how AI
+            can make retail trading genuinely more transparent — not just faster
+            or cheaper.
           </p>
           <p>
-            <a href="" style={{ textDecoration: "none" }}>
-              Rainmatter
+            The two AI features — portfolio explanations and real-time stock
+            insights — were built to test a simple idea: traders shouldn't have
+            to leave the app to understand their own money.
+          </p>
+          <p>
+            There's more to build here. Check the :-
+              <a href="https://github.com/PranavB110/LucidTrade" style={{ textDecoration: "none" }}>
+              GitHub
             </a>
-            , our fintech fund and incubator, has invested in several fintech
-            startups with the goal of growing the Indian capital markets.
-          </p>
-          <p>
-            And yet, we are always up to something new every day. Catch up on
-            the latest updates on our blog or see what the media is saying about
-            us or learn more about our business and product philosophies.
+            - repo for the latest
+            updates, or see the README for the full technical breakdown of how
+            it all works.
           </p>
         </div>
       </div>

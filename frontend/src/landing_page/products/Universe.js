@@ -5,15 +5,13 @@ function Universe() {
     <div className="container">
       <div className="text-center  mb-3 p-5">
         <p>
-          Want to know more about our technology stack? Check out the
-          Zerodha.tech blog.
+          Want to know more about our technology stack? Check out the LucidTrade <a href="https://github.com/PranavB110/LucidTrade" >GitHub</a>.
         </p>
       </div>
       <div className="text-center mb-3">
-        <h1 class>The Zerodha Universe</h1>
+        <h1 class>The LucidTrade Universe</h1>
         <p className="mt-3">
-          Extend your trading and investment experience even further with our
-          partner platforms
+          Where this project could go next
         </p>
       </div>
       <div className="row text-muted text-center p-5">
