@@ -11,7 +11,7 @@ const Menu = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/checkAuth", { withCredentials: true })
+      .get("https://lucidtrade-backend.onrender.com/checkAuth", { withCredentials: true })
       .then((res) => {
         if (res.data.status) {
           setUsername(res.data.user.username || res.data.user.email);
@@ -32,7 +32,7 @@ const Menu = () => {
 
   const handleLogoutClick = () => {
     axios
-      .post("http://localhost:3002/logout", {}, { withCredentials: true })
+      .post("https://lucidtrade-backend.onrender.com/logout", {}, { withCredentials: true })
       .then(() => {
         window.location.href = "http://localhost:3001/login";
       })

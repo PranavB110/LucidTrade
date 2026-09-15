@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const API_URL = "http://localhost:3002";
+const API_URL = "https://lucidtrade-backend.onrender.com";
 const LOGIN_URL = "http://localhost:3001/login";
 
 function ProtectedRoute({ children }) {

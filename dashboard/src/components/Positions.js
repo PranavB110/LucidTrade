@@ -6,7 +6,7 @@ const Positions = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/allPositions", { withCredentials: true })
+      .get("https://lucidtrade-backend.onrender.com/allPositions", { withCredentials: true })
       .then((res) => {
         setAllPositions(res.data);
       })

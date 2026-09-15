@@ -12,7 +12,7 @@ const Summary = () => {
     setExplanation("");
 
     axios
-      .get("http://localhost:3002/explainPortfolio", { withCredentials: true })
+      .get("https://lucidtrade-backend.onrender.com/explainPortfolio", { withCredentials: true })
       .then((res) => {
         if (res.data.success) {
           setExplanation(res.data.explanation);

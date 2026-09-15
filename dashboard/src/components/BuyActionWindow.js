@@ -11,7 +11,7 @@ const BuyActionWindow = ({ uid }) => {
 
   const handleBuyClick = () => {
     axios.post(
-      "http://localhost:3002/newOrder",
+      "https://lucidtrade-backend.onrender.com/newOrder",
       {
         name: uid,
         qty: stockQuantity,

@@ -95,7 +95,7 @@ const WatchListItem = ({ stock }) => {
     setExplainText("");
 
     axios
-      .get(`http://localhost:3002/explainStock/${stock.name}`, {
+      .get(`https://lucidtrade-backend.onrender.com/explainStock/${stock.name}`, {
         withCredentials: true,
       })
       .then((res) => {

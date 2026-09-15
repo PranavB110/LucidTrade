@@ -8,7 +8,7 @@ const Orders = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/allOrders", { withCredentials: true })
+      .get("https://lucidtrade-backend.onrender.com/allOrders", { withCredentials: true })
       .then((res) => {
         setAllOrders(res.data);
         setLoading(false);
