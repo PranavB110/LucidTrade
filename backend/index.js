@@ -23,7 +23,8 @@ const uri = process.env.MONGO_URL;
 
 app.use(
   cors({
-    origin: ["http://localhost:3000","http://localhost:3001", "http://localhost:3003"],
+    origin: ["http://localhost:3000","http://localhost:3001", "http://localhost:3003", "https://lucidtrade-frontend.vercel.app",
+      "https://lucidtrade-dashboard.vercel.app"],
     credentials: true,
   })
 );
