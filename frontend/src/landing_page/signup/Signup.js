@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const API_URL = "https://lucidtrade-backend.onrender.com";
-const DASHBOARD_URL = "http://localhost:3003";
+const DASHBOARD_URL = "https://lucidtrade-dashboard.vercel.app";
 
 function Signup() {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
