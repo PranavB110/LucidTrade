@@ -34,7 +34,7 @@ const Menu = () => {
     axios
       .post("https://lucidtrade-backend.onrender.com/logout", {}, { withCredentials: true })
       .then(() => {
-        window.location.href = "http://localhost:3001/login";
+        window.location.href = "https://lucidtrade-frontend.vercel.app/login";
       })
       .catch((err) => {
         console.error("Logout failed:", err);

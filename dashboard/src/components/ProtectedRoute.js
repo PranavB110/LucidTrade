@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const API_URL = "https://lucidtrade-backend.onrender.com";
-const LOGIN_URL = "http://localhost:3001/login";
+const LOGIN_URL = "https://lucidtrade-frontend.vercel.app/login";
 
 function ProtectedRoute({ children }) {
   const [status, setStatus] = useState("checking"); // checking | ok | fail
