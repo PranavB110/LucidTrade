@@ -29,12 +29,12 @@ LucidTrade is a full-stack stock trading platform built on the MERN stack, featu
 
 | | |
 |---|---|
-| 🔐 **Secure Authentication** | JWT-based signup/login with bcrypt password hashing and cross-domain cookie sessions |
-| 📊 **Live Portfolio Tracking** | Holdings, Positions, and Orders synced per authenticated user |
-| 💰 **Order Management** | Place buy orders, tracked and tied to your account |
-| 🤖 **AI Portfolio Insights** | Calculates real P&L, top gainers/losers, and portfolio concentration, then uses Gemini to generate a plain-English performance summary |
-| 📰 **"Why Is This Moving?"** | Fetches real, recent news for any stock and uses Gemini to explain what might be driving its price movement, with source links |
-| 🖥️ **Full Broker Architecture** | Separate marketing site and authenticated trading dashboard, matching real-world broker platform design |
+|  **Secure Authentication** | JWT-based signup/login with bcrypt password hashing and cross-domain cookie sessions |
+|  **Live Portfolio Tracking** | Holdings, Positions, and Orders synced per authenticated user |
+|  **Order Management** | Place buy orders, tracked and tied to your account |
+|  **AI Portfolio Insights** | Calculates real P&L, top gainers/losers, and portfolio concentration, then uses Gemini to generate a plain-English performance summary |
+|  **"Why Is This Moving?"** | Fetches real, recent news for any stock and uses Gemini to explain what might be driving its price movement, with source links |
+|  **Full Broker Architecture** | Separate marketing site and authenticated trading dashboard, matching real-world broker platform design |
 
 ---
 
