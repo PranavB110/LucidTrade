@@ -12,8 +12,9 @@ module.exports.Signup = async (req, res, next) => {
     const user = await User.create({ email, password, username, createdAt });
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
-      withCredentials: true,
       httpOnly: false,
+      secure: true,
+      sameSite: "none",
     });
     res
       .status(201)
@@ -44,8 +45,9 @@ module.exports.Login = async (req, res, next) => {
 
     const token = createSecretToken(user._id);
     res.cookie("token", token, {
-      withCredentials: true,
       httpOnly: false,
+      secure: true,
+      sameSite: "none",
     });
 
     res.status(200).json({
@@ -75,6 +77,8 @@ module.exports.Logout =  async (req, res) => {
   res.cookie("token", "", {
     maxAge: 1,
     httpOnly: false,
+    secure: true,
+    sameSite: "none",
   });
   res.status(200).json({ success: true, message: "Logged out successfully." });
 };
